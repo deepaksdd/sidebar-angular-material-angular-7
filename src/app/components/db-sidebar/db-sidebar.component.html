@@ -1,0 +1,67 @@
+<a routerLinkActive="active" routerLink="/login">Login</a> |
+
+<a routerLinkActive="active" routerLink="/accounting">Accounting</a> |
+
+<a routerLinkActive="active" routerLink="/marketing">Marketing</a> |
+
+<a routerLinkActive="active" routerLink="/project">Project</a>
+
+
+<div class="nav-side-menu">
+  <!-- <div class="icon-wrap">
+    <div class="icon">
+      <div class="bar"></div>
+
+    </div>
+  </div> -->
+
+  <div class="brand">ORGANIZATION NAME</div>
+
+
+  <!-- <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i> -->
+
+  <div class="menu-list">
+
+    <ul id="menu-content" class="menu-content collapse ">
+      <li routerLinkActive="active" routerLink="/project">
+        <a class="projects">Projects</a>
+
+      </li>
+
+      <li data-toggle="collapse" data-target="#products" class="collapsed active">
+        <a>Accounting<span class="arrow"></span></a>
+      </li>
+      <ul class="sub-menu collapse" id="products">
+        <li (click)="onsideBarLinkClicked('/accounting/chart-of-accounts')"><a>Charts of Account</a></li>
+        <li (click)="onsideBarLinkClicked('/accounting/financial-report')"><a>Financial Report</a></li>
+        <li (click)="onsideBarLinkClicked('/accounting/vouchers')"><a>Vouchers</a></li>
+      </ul>
+      <li (click)="onsideBarLinkClicked('/marketing')">
+        <a>Marketing</a>
+      </li>
+
+      <li data-toggle="collapse" data-target="#service" class="collapsed">
+        <a> Marketing Master <span class="arrow"></span></a>
+      </li>
+      <ul class="sub-menu collapse" id="service">
+        <li (click)="onsideBarLinkClicked('/marketing/activityType')"><a routerLinkActive="active-link">Activity Type</a></li>
+        <li (click)="onsideBarLinkClicked('/marketing/media-category')"><a>Media Category</a></li>
+        <li (click)="onsideBarLinkClicked('/marketing/medium')"><a>Medium</a></li>
+        <li (click)="onsideBarLinkClicked('/marketing/nature')"><a>Nature</a></li>
+        <li (click)="onsideBarLinkClicked('/marketing/phase')"><a>Phase</a></li>
+        <li (click)="onsideBarLinkClicked('/marketing/quality')"><a>Quality</a></li>
+        <li (click)="onsideBarLinkClicked('/marketing/time-category')"><a>Time Category</a></li>
+
+
+
+      </ul>
+
+
+      <li (click)="onsideBarLinkClicked('/style-guide')"> <a>Style-guide</a>
+      </li>
+
+
+
+    </ul>
+  </div>
+</div>

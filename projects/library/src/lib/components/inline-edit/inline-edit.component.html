@@ -1,0 +1,37 @@
+<div *ngIf="value.Id == 0 || value.Id == null; else idNotZero">
+  <div *ngIf="!value._error; else errorTemplate">
+    <div class="spinner_content">
+      <mat-spinner [diameter]="15"></mat-spinner>
+      <div class="inline-edit">{{value.Name}}</div>
+    </div>
+  </div>
+
+  <ng-template #errorTemplate>
+    <div class="spinner_content">
+      <i class="fas fa-exclamation-triangle"></i>
+      <input [required]="required" [(ngModel)]="value.Name" (keyup.enter)="onAdd($event)" (blur)="onAdd($event)" [name]="name"
+        [type]="type" [placeholder]="placeholder" />
+    </div>
+  </ng-template>
+
+
+</div>
+<ng-template #idNotZero>
+  <div *ngIf="!value._error; else errorEditTemplate">
+    <div *ngIf="editing">
+      <input [required]="required" [(ngModel)]="value.Name" (keyup.enter)="onBlur($event)" (blur)="onBlur($event)" [name]="name"
+        [type]="type" [placeholder]="placeholder" />
+    </div>
+    <div *ngIf="!editing">
+      <!-- <div (dblclick)="onEdit(value)" class="inline-edit">{{value.Name}}</div> -->
+      <div (click)="onEdit(value)" class="inline-edit">{{value.Name}}</div>
+    </div>
+  </div>
+  <ng-template #errorEditTemplate>
+    <div class="spinner_content">
+      <i class="fas fa-exclamation-triangle"></i>
+      <input [required]="required" [(ngModel)]="value.Name" (keyup.enter)="onBlur($event)" (blur)="onBlur($event)" [name]="name"
+        [type]="type" [placeholder]="placeholder" />
+    </div>
+  </ng-template>
+</ng-template>

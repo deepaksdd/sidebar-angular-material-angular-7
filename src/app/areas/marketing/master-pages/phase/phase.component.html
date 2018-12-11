@@ -1,0 +1,43 @@
+<div class="body-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div [class]="colsm6">
+        <mat-card>
+          <div class="project-details">
+            <h4 class="main_heading bdr_heading">Phase <a><i class="fa fa-cog black_icon pull-right"></i></a></h4>
+          </div>
+          <div class="responsive_table-responsive">
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <td width="5%"></td>
+                  <td width="40%"><a class="add_new" (click)="onItemClick(0)">Add New....</a></td>
+                  <td width="20%"></td>
+                  <td width="20%"></td>
+                  <td width="7%"></td>
+                </tr>
+                <tr *ngFor="let db of getPhaseList" (click)="onItemClick(db.JobPhaseId)">
+                  <td class="grey-text" width="5%">{{db.JobPhaseId}}</td>
+                  <td width="40%" text-align="left">
+                    <p class="diamond">{{db.Phase}}</p>
+                  </td>
+                  <td class="text-right" width="10%"></td>
+                  <td class="text-left" width="30%">
+                    <!-- <p class="diamond">{{db.Medium}}</p> -->
+                  </td>
+                  <td class="" width="7"></td>
+                </tr>
+
+              </tbody>
+
+            </table>
+          </div>
+        </mat-card>
+      </div>
+      <div [ngStyle]="{'visibility': showPhaseDetail ? 'visible' : 'hidden'}" class="col-sm-6">
+        <app-phase-details (updatePhase)="updatePhaseList($event)" (addPhase)="addPhaseList($event)" (deletePhase)="onPhaseDeleted($event)"
+          (hideDetailPanel)="hideDetailPanel($event)" [phaseId]="phaseId"></app-phase-details>
+      </div>
+    </div>
+  </div>
+</div>

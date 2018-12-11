@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-12">
+    <mat-card>
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- <span (click)="onHideDetailPanel()"><i title="Back to List" class="fas fa-arrow-left"></i></span> -->
+        </div>
+        <div class="col-sm-6">
+          <div *ngIf="archiveButton" class="col-sm-6"><a class="pull-right" (click)="DeleteMedium(mediumId)">Archive</a></div>
+        </div>
+      </div>
+
+      <form [formGroup]="mediumDetailsForm">
+        <!-- <div class="container-fluid"> -->
+        <div class="row">
+          <div class="col-sm-12">
+
+            <div class="col-sm-6">
+              <label>Medium</label>
+              <input (blur)="onChange(mediumName.value)" #mediumName formControlName="mediumName" matInput name="mediumName"
+                class="form-control" placeholder="Medium" />
+            </div>
+
+          </div>
+        </div>
+        <!-- </div> -->
+      </form>
+
+    </mat-card>
+  </div>
+</div>

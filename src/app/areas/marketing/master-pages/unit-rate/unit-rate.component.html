@@ -1,0 +1,117 @@
+
+<div class="row">
+  <div class="col-sm-12">
+    <mat-card>
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- <span (click)="onHideDetailPanel()"><i title="Back to List" class="fas fa-arrow-left"></i></span> -->
+        </div>
+        <div *ngIf="archiveUnitRate" class="col-sm -6 pull-right">
+          <a class="pull-right" (click)="DeleteUnitRate(routeId)">Archive</a>
+        </div>
+      </div>
+      <form [formGroup]="unitRateForm">
+          <mat-form-field class="example-full-width">
+              <mat-select formControlName="activity" placeholder="Activity" #activity name="activity" (selectionChange)="onChange('activity',$event.value)">
+                <mat-option *ngFor="let contract of activities" [value]="contract.ActivityTypeId">
+                  {{contract.ActivityName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <span class="validationError" *ngIf="formErrors.activity">{{formErrors.activity}}</span>
+  
+            <div class="row">
+              <div class="col-sm-5">
+                <label>Quality</label>
+                <mat-form-field class="example-full-width">
+                  <mat-select formControlName="quality" #quality placeholder="Quality" name="quality" (selectionChange)=" ValidateFields('quality',$event.value)">
+                    <mat-option *ngFor="let contract of qualities" [value]="contract.QualityId">
+                      {{contract.QualityName}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <span class="validationError" *ngIf="formErrors.quality">{{formErrors.quality}}</span>
+              </div>
+  
+              <div class="col-sm-5">
+                <label>Job Nature</label>
+                <mat-form-field class="example-full-width">
+                  <mat-select formControlName="nature" placeholder="Job Nature" #nature name="nature" (selectionChange)="ValidateFields('nature',$event.value)">
+                    <mat-option *ngFor="let contract of natures" [value]="contract.NatureId">
+                      {{contract.NatureName}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <span class="validationError" *ngIf="formErrors.nature">{{formErrors.nature}}</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5">
+                <label>Time Category</label>
+                <mat-form-field class="example-full-width">
+                  <mat-select formControlName="timeCategory" placeholder="Time Category" #timeCategory name="timeCategory"
+                    (selectionChange)="ValidateFields('timeCategory',$event.value)">
+                    <mat-option *ngFor="let contract of timecategories" [value]="contract.TimeCategoryId">
+                      {{contract.TimeCategoryName}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <span class="validationError" *ngIf="formErrors.timeCategory">{{formErrors.timeCategory}}</span>
+              </div>
+              <div class="col-sm-5">
+                <label>Medium</label>
+                <mat-form-field class="example-full-width">
+                  <mat-select formControlName="medium" placeholder="Medium" #medium name="medium" (selectionChange)="ValidateFields('medium',$event.value)">
+                    <mat-option *ngFor="let contract of mediums" [value]="contract.MediumId">
+                      {{contract.MediumName}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <span class="validationError" *ngIf="formErrors.medium">{{formErrors.medium}}</span>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-sm-5">
+                <label>Currency</label>
+                <mat-form-field class="example-full-width">
+                  <mat-select formControlName="currency" placeholder="Currency" #currency name="currency"
+                    (selectionChange)="ValidateFields('currency',$event.value)">
+                    <mat-option *ngFor="let contract of currencies" [value]="contract.CurrencyId">
+                      {{contract.CurrencyCode}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <span class="validationError" *ngIf="formErrors.currency">{{formErrors.currency}}</span>
+              </div>
+              <div class="col-sm-5">
+                <label>Media Category</label>
+                <mat-form-field class="example-full-width">
+                  <mat-select formControlName="mediaCategory" placeholder="Media Category" #mediaCategory name="mediaCategory"
+                    (selectionChange)="ValidateFields('mediaCategory',$event.value)">
+                    <mat-option *ngFor="let contract of mediaCategories" [value]="contract.MediaCategoryId">
+                      {{contract.CategoryName}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div style="display: none">
+                <label>Unit Rate Id</label> &nbsp;&nbsp;
+                <!-- <input myNumberOnly name="min" placeholder="Enter Value" > -->
+                <input type="text" matInput formControlName="unitRateId" #unitRateId class="textbox" placeholder="Unit Rate Id">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <label>Unit Rate</label> &nbsp;&nbsp;
+                <input (blur)="ValidateFields('unitRate',unitRate.value)" appNumberOnly="true" formControlName="unitRate"
+                  type="text" #unitRate class="textbox" placeholder="Unit Rate">
+                <span class="validationError" *ngIf="formErrors.unitRate">{{formErrors.unitRate}}</span>
+              </div>
+            </div>
+  
+      </form>
+
+    </mat-card>
+  </div>
+</div>

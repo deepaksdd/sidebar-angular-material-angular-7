@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-sm-12">
+      <mat-card>
+          <div class="row">
+              <div class="col-sm-6">
+                  <!-- <span (click)="onHideDetailPanel()"><i title="Back to List" class="fas fa-arrow-left"></i></span> -->
+              </div>
+              <div class="col-sm-6">
+                  <div *ngIf="archiveButton" class="col-sm-6"><a class="pull-right" (click)="DeleteTimeCategory(timeCategoryId)">Archive</a></div>
+              </div>
+            </div>
+            <form [formGroup]="timeCategoryDetailsForm">
+                <div class="row">
+                  <div class="col-sm-12">
+                       
+                      <div class="col-sm-6">
+                        <label>Time Category</label>
+                        
+                        <input (blur)="onChange(timeCategoryName.value)" #timeCategoryName formControlName="timeCategoryName"
+                        matInput name="timeCategoryName" class="form-control" placeholder="Time Category"/>
+                      </div>
+                  </div>
+                </div>
+            </form>
+        </mat-card>
+        </div>
+        </div>
+
+
+

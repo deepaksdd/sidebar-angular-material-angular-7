@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-sm-12">
+      <mat-card>
+        <div class="row">
+          <div class="col-sm-6">
+            <!-- <span (click)="onHideDetailPanel()"><i title="Back to List" class="fas fa-arrow-left"></i></span> -->
+          </div>
+          <div class="col-sm-6">
+            <!-- <div *ngIf="archiveButton" class="col-sm-6"><a class="pull-right" (click)="DeleteActivity(activityTypeId)">Archive</a></div> -->
+          </div>
+        </div>
+        <form [formGroup]="activityDetailsForm">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="col-sm-6">
+                <label>Activity Type</label>
+                <input #activityName formControlName="activityName" matInput name="activityName"
+                  class="form-control" placeholder="Activity Type" />
+              </div>
+            </div>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+  </div>

@@ -1,0 +1,252 @@
+<div class="top_header">
+  <div *ngIf="selectedHeader == projectModule">
+    <div class="top-header clearfix">
+      <h3>PROJECTS</h3>
+      <nav class="navbar navbar-default">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#navbar"
+            aria-expanded="false"
+            aria-controls="navbar"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span> <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </nav>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul>
+          <li (click)="onHeaderClicked(projectModule, 'projects')">
+            <a routerLinkActive="active">My Projects</a>
+          </li>
+          <li (click)="onHeaderClicked(projectModule, 'proposals')">
+            <a routerLinkActive="active">Proposals</a>
+          </li>
+          <li (click)="onHeaderClicked(projectModule, 'donormasterlist')">
+            <a routerLinkActive="active">Donors</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedHeader == marketingModule">
+    <div class="top-header clearfix">
+      <h3>MARKETING</h3>
+      <nav class="navbar navbar-default">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#navbar"
+            aria-expanded="false"
+            aria-controls="navbar"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span> <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </nav>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul>
+          <li (click)="onHeaderClicked(marketingModule, 'clients')">
+            <a routerLinkActive="active">Clients</a>
+          </li>
+          <li (click)="onHeaderClicked(marketingModule, 'unitRateList')">
+            <a routerLinkActive="active">Unit Rates</a>
+          </li>
+          <li (click)="onHeaderClicked(marketingModule, 'jobs')">
+            <a routerLinkActive="active">Jobs</a>
+          </li>
+          <li (click)="onHeaderClicked(marketingModule, 'contracts')">
+            <a routerLinkActive="active">Contracts</a>
+          </li>
+          <li (click)="onHeaderClicked(marketingModule, 'policy')">
+            <a routerLinkActive="active">Broadcast Policy</a>
+          </li>
+          <li (click)="onHeaderClicked(marketingModule, 'scheduler')">
+            <a routerLinkActive="active">Scheduler</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedHeader == projectModuleDetail">
+    <div class="top-header clearfix">
+      <a (click)="backToProject()" class="back_arrow">
+        <i class="fas fa-arrow-left"></i
+      ></a>
+      <!--
+        <div class="icon-wrap">
+          <div class="icon">
+            <div class="bar"></div>
+
+          </div>
+        </div>
+      -->
+      <h3>{{ headerName }}</h3>
+      <nav class="navbar navbar-default">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#navbar"
+            aria-expanded="false"
+            aria-controls="navbar"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span> <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </nav>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul>
+          <!--
+            <li (click)="onHeaderClicked(projectModuleDetail, 'details')"> <a routerLinkActive="active">Details</a></li>
+            <li (click)="onHeaderClicked(projectModuleDetail, 'metadata')"> <a routerLinkActive="active">Metadata</a></li>
+            <li (click)="onHeaderClicked(projectModuleDetail, 'proposal')"> <a routerLinkActive="active">Proposal</a></li>
+            <li (click)="onHeaderClicked(projectModuleDetail, 'biddingCommittee')"> <a routerLinkActive="active">Bidding
+                Committee</a></li>
+            <li (click)="onHeaderClicked(projectModuleDetail, 'budgetLines')"> <a routerLinkActive="active">Budget Lines</a></li>
+          -->
+
+          <li class="active">
+            <a data-toggle="tab" href="#details">Details</a>
+          </li>
+          <li><a data-toggle="tab" href="#metadata">Metadata</a></li>
+          <li><a data-toggle="tab" href="#proposal">Proposal</a></li>
+          <li>
+            <a data-toggle="tab" href="#biddingCommittee">Bidding Committee</a>
+          </li>
+          <li><a data-toggle="tab" href="#budgetLines">Budget Lines</a></li>
+          <li>
+            <a data-toggle="tab" href="#criteriaEvaluation"
+              >Criteria Evaluation</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedHeader == chartOfAccountHeader">
+    <div class="top-header clearfix">
+      <h3>Chart Of Accounts</h3>
+      <nav class="navbar navbar-default">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#navbar"
+            aria-expanded="false"
+            aria-controls="navbar"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span> <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </nav>
+
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul>
+          <li (click)="onHeaderClicked(chartOfAccountHeader, 'assets')">
+            <a routerLinkActive="active">Assets</a>
+          </li>
+          <li (click)="onHeaderClicked(chartOfAccountHeader, 'funds')">
+            <a routerLinkActive="active">Funds</a>
+          </li>
+          <li (click)="onHeaderClicked(chartOfAccountHeader, 'income')">
+            <a routerLinkActive="active">Income</a>
+          </li>
+          <li (click)="onHeaderClicked(chartOfAccountHeader, 'expense')">
+            <a routerLinkActive="active">Expense</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedHeader == financialAccountHeader">
+    <div class="top-header clearfix">
+      <h3>Financial Report</h3>
+      <nav class="navbar navbar-default">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#navbar"
+            aria-expanded="false"
+            aria-controls="navbar"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span> <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </nav>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul>
+          <li
+            (click)="onHeaderClicked(financialAccountHeader, 'balance-sheet')"
+          >
+            <a routerLinkActive="active">Balance Sheet </a>
+          </li>
+          <li
+            (click)="
+              onHeaderClicked(financialAccountHeader, 'income-expense-report')
+            "
+          >
+            <a routerLinkActive="active">Income Expense Report</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedHeader == vouchersHeader">
+    <div class="top-header clearfix">
+      <h3>Vouchers</h3>
+      <nav class="navbar navbar-default">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#navbar"
+            aria-expanded="false"
+            aria-controls="navbar"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span> <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <!--
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul>
+
+              <li class="active"><a data-toggle="tab" href="#details">Details</a></li>
+              <li><a data-toggle="tab" href="#metadata">Metadata</a></li>
+              <li><a data-toggle="tab" href="#proposal">Proposal</a></li>
+              <li><a data-toggle="tab" href="#biddingCommittee">Bidding Committee</a></li>
+              <li><a data-toggle="tab" href="#budgetLines">Budget Lines</a></li>
+
+            </ul>
+          </div>
+        -->
+      </nav>
+    </div>
+  </div>
+</div>

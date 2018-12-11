@@ -1,0 +1,58 @@
+<div class="project-list-main">
+
+  <!-- <app-dbheader [selectedHeader]="setSelectedHeader" [headerName]="setProjectHeader"></app-dbheader> -->
+
+
+  <div class="main_body">
+
+    <div class="body-content">
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1">
+            <mat-card>
+              <div class="project-details">
+                <h4 class="main_heading">Projects <a href="#"><i class="fa fa-cog black_icon pull-right"></i></a></h4>
+
+              </div>
+              <div class="responsive_table-responsive  table-responsive mar_tp_40" >
+                <table class="table table-bordered" >
+                  <tbody>
+                    <tr>
+                      <td width="5%"></td>
+                      <td><a class="add_new" (click)="addNewProject(0)">Add New....</a></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td width="5%"></td>
+                    </tr>
+
+                    <tr *ngFor="let list of projectList" (click)="addNewProject(list.ProjectId)">
+                      <td width="5%"></td>
+                      <td class="grey-text">{{list.ProjectId}}/{{list.ProjectCode}}</td>
+                      <td >
+                          <p class="diamond">{{list.ProjectName}}<span *ngIf="list.ProjectDescription!=null">/{{list.ProjectDescription}}</span></p>
+                      </td>
+                      <td class="grey-text" >{{list.TotalDaysinHours}} hours</td>
+                      <td>  <p class="diamond">{{list.ProjectPhase}}</p></td>
+                      <td class="" ><a class="blue-circle "><i class="far fa-bell"></i></a></td>
+                      <td width="5%"></td>
+                    </tr>
+
+                  </tbody>
+
+                </table>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="body_scroll"> -->
+      <router-outlet></router-outlet>
+    <!-- </div> -->
+
+  </div>
+</div>

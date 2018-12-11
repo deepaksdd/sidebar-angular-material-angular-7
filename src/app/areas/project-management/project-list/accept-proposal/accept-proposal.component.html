@@ -1,0 +1,81 @@
+
+     
+
+   
+            <div class="tab-content">
+              <div id="details" class="tab-pane fade in active">
+                <div class="project-details mar_tp_20 ">
+                  <div class="">
+                    <div *ngIf="!winProjectFlag" class="">
+                      <form [formGroup]="approvalForm">
+                        <div class="row">
+                          <div class="col-sm-12 text-center">
+                          <div class="action button">
+                            <button type="submit" class="btn btn-success" (click)="isApproved(approvalForm.value,true)"><i class="material-icons">
+                              done
+                              </i> Approve</button>
+                            <button type="button" class="btn btn-danger" (click)="isRejceted(approvalForm.value,false)"><i class="material-icons">
+                              clear
+                              </i>Reject</button>
+
+                          </div>
+                          </div>
+                          <div class="col-sm-6">
+                          </div>
+                        </div>
+                        <div class="row">
+                        </div>
+                        <div class="">
+                         <div class="col-sm-12">
+                           <div class="bdr_btm pad_btm_25">
+                          <textarea class="form-control rounded-0" id="CommentText" rows="3" placeholder="Type Here.."
+                          formControlName="CommentText">
+                        </textarea>
+                      </div>
+                         </div>
+                        </div>
+                      </form>
+                    </div>
+                    <!-- template for win project detail************ -->
+                    <div *ngIf="winProjectFlag" class="">
+                      <form [formGroup]="approvalForm" >
+                        <div class="row">
+                          <div class="col-sm-12 text-center">
+                              <div class="action button">
+                            <button type="submit"  [disabled]="!approvalForm.valid" class="btn btn-success" (click)="isWin(approvalForm.value,true)">Win</button>
+                            <button type="button" [disabled]="!approvalForm.valid" class="btn btn-danger" (click)="isLoss(approvalForm.value,false)">Loss</button>
+
+                          </div></div>
+                         
+                        </div>
+                        <div class="row">
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="bdr_btm pad_btm_25">
+                          <textarea class="form-control rounded-0" id="CommentText" rows="3" placeholder="Type Here.."
+                            formControlName="CommentText" required>
+                            </textarea>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                  </div>
+
+                  <div class="row">
+                    <!-- <div class="form-group">
+                      <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Type Here.."></textarea>
+                    </div> -->
+
+                    <!-- <textarea class="form-control text_manage" matInput #approvalDescription placeholder="Type here..."
+                        [ngModel]="" name="approvalDescription">
+                      </textarea> -->
+
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+      
+

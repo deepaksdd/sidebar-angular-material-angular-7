@@ -1,0 +1,249 @@
+<div class="body-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div [class]="colsm6">
+        <mat-card>
+          <div class="project-details">
+            <h4 class="main_heading bdr_heading">Jobs <a href="#"><i class="fa fa-cog black_icon pull-right"></i></a></h4>
+          </div>
+          <div class="responsive_table-responsive">
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <td width="5%"></td>
+                  <!-- <td width="40%"><a class="add_new" routerLink="jobs">Add New....</a></td> -->
+                  <td width="40%"><a class="add_new" (click)="onItemClick($event)">Add New...</a></td>
+                  <td width="20%"></td>
+                  <td width="20%"></td>
+                  <td width="7%"></td>
+                </tr>
+                <tr *ngFor="let db of jobsList">
+                    <td class="grey-text" width="5%"></td>
+                    <td width="40%" text-align="left">
+                      <p class="diamond"></p>
+                    </td>
+                    <td class="text-right" width="10%"></td>
+                    <td class="text-left" width="30%">
+                      <!-- <p class="diamond">{{db.Medium}}</p> -->
+                    </td>
+                    <td class="" width="7"></td>
+                </tr>
+              </tbody>
+
+            </table>
+          </div>
+        </mat-card>
+      </div>
+
+
+      <!-- Details -->
+      <div *ngIf="showJobDetail" class="col-sm-6">
+        <app-job-details></app-job-details>
+
+        <!-- <mat-card>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="tab-content">
+          <div id="details" class="tab-pane fade in active">
+
+            <div class="top-header clearfix">
+              <h4 class="main_heading">PROJECT Name
+                <a href="#" class="grey_color"> <i class="fa fa-check  pull-right"></i></a>
+                <a href="#" class="grey_color"> <i class="fa fa-trash  pull-right"></i></a>
+
+              </h4>
+
+            </div>
+            <div class=" bdr_btm clearfix ">
+              <div class="row pad_btm_25 mar_tp_40">
+
+                <div class="col-sm-4">
+
+                  <div class="comment-text table top_9">
+                    <div class="user_name table-cell">
+                      <p class="ocean_blue"><i class="fas fa-file-alt"></i></p>
+                    </div>
+                    <div class="user_text table-cell">
+                      <p class="grey_color pad_left_5"><i class="fa fa-check"></i></p>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="col-sm-4">
+
+                  <div class="comment-text table">
+                    <div class="user_name table-cell">
+                      <p class="ocean_blue"><i class="far fa-calendar-times"></i></p>
+
+                    </div>
+                    <div class="user_text table-cell">
+                      <p class="grey_color"><b>End Date</b><br> 28 June, 2018</p>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col-sm-4">
+
+                  <div class="comment-text table">
+                    <div class="user_name table-cell">
+                      <p class="ocean_blue"><i class="fas fa-file-signature"></i></p>
+
+                    </div>
+                    <div class="user_text table-cell">
+                      <p class="grey_color"><b>Contract</b><br>Name /Id</p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class=" bdr_btm clearfix ">
+              <div class="row mar_tp_20 pad_btm_7">
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <input class="form-control project_input value_round" placeholder="units 32" type="text" value="units 32">
+                  </div>
+                </div>
+                <div class="col-sm-1">
+                  <p class="grey_color mar_tp_7">x</p>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group mar_btm_0">
+                    <input class="form-control project_input  value_round" placeholder="units 32" type="text" value="units 32">
+                  </div>
+                  <p class="grey_color font-10">Contract-rate 32</p>
+                </div>
+                <div class="col-sm-1">
+                  <p class="grey_color">=</p>
+                </div>
+                <div class="col-sm-4">
+                  <p class="grey_color mar_btm_0">680
+                    <p class="">Total</p>
+                </div>
+              </div>
+            </div>
+            <div class=" bdr_btm clearfix ">
+              <div class="row mar_tp_20 pad_btm_7">
+                <div class="col-sm-12 text-center">
+                  <b><p>SUMMARY</p></b>
+                  <ul class="summary clearfix mar_tp_20">
+                    <li>680
+                      <p>FINAL PRICE</p>
+                    </li>
+                    <li>3.2
+                      <p>FINAL RATE</p>
+                    </li>
+                    <li>15
+                      <p>DISCOUNT</p>
+                    </li>
+                    <li>2.5
+                      <p>DISCOUNT %</p>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+            <div class=" bdr_btm clearfix ">
+              <div class="row mar_tp_20 pad_btm_7">
+                <div class="col-sm-12 text-center side_pad">
+                  <b><p><a href="#" class="far fa-eye"></a>AGREEMENT <a href="#" class="fa fa-check grey_color"></a>
+                    </p></b>
+                  <b class="disabled"><p>INVOICE <a href="#" class="fa fa-check grey_color"></a><a href="#" class="fas fa-sync-alt grey_color "></a></p></b>
+
+                </div>
+
+              </div>
+            </div>
+            <div class="notification_div mar_tp_20">
+              <ul>
+                <li class="active_notify"><a ng-href="#"><b>Hamza Rahimy</b> created project. 28 june at 3:00 .</a></li>
+                <li><a ng-href="#"><b>Hamza Rahimy</b> assigned a <b> User name</b> as a <b>Role name</b>. 28 june
+                    at 3:00
+                  </a></li>
+
+              </ul>
+            </div>
+            <div class="comment-text">
+              <div class="user_name">
+                <p>HR</p>
+              </div>
+              <div class="user_text">
+                <p> <b>Hamza Rahimy</b> 28 june at 3:00 .</p>
+
+                <div class="listing">
+
+                  <ul>
+                    <li>This is bullet text.</li>
+                    <li>This is bullet text.</li>
+                    <li>This is bullet text.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="comment-text">
+              <div class="user_name">
+                <p>HR</p>
+              </div>
+              <div class="user_text">
+                <p> <b>Hamza Rahimy</b> 28 june at 3:00 .</p>
+                <ul class="documents clearfix">
+                  <li>
+                    <a href="#">
+                      <mat-card>
+                        <i class="fas fa-file-alt blue"></i>
+                        <p>text .. </p>
+                      </mat-card>
+
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <mat-card>
+                        <i class="fas fa-file-excel green"></i>
+                        <p>text .. </p>
+                      </mat-card>
+
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <mat-card>
+                        <i class="fas fa-file-word red"></i>
+                        <p>text .. </p>
+                      </mat-card>
+
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="notification_div mar_tp_20 pad_btm_25">
+              <ul>
+                <li><a ng-href="#"><b>Hamza Rahimy</b> created project. 28 june at 3:00 ,</a></li>
+                <li><a ng-href="#"><b>Hamza Rahimy</b> assigned a <b> User name</b> as a <b>Role name</b>. 28 june
+                    at 3:00
+                  </a></li>
+
+              </ul>
+            </div>
+            
+
+
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </mat-card> -->
+
+      </div>
+
+    </div>
+  </div>
+</div>

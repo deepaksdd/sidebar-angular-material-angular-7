@@ -1,0 +1,42 @@
+p<div class="body-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div [class]="colsm6">
+        <mat-card>
+          <div class="project-details">
+            <h4 class="main_heading bdr_heading">Time Category <a><i class="fa fa-cog black_icon pull-right"></i></a></h4>
+          </div>
+          <div class="responsive_table-responsive">
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <td width="5%"></td>
+                  <td width="40%"><a class="add_new" (click)="onItemClick(0)">Add New....</a></td>
+                  <td width="20%"></td>
+                  <td width="20%"></td>
+                  <td width="7%"></td>
+                </tr>
+                <tr *ngFor="let db of getTimeCategoryList" (click)="onItemClick(db.TimeCategoryId)">
+                  <td class="grey-text" width="5%">{{db.TimeCategoryId}}</td>
+                  <td width="40%" text-align="left">
+                    <p class="diamond">{{db.TimeCategoryName}}</p>
+                  </td>
+                  <td class="text-right" width="10%"></td>
+                  <td class="text-left" width="30%">
+                    <!-- <p class="diamond">{{db.Medium}}</p> -->
+                  </td>
+                  <td class="" width="7"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </mat-card>
+      </div>
+      <div [ngStyle]="{'visibility': showTimeCategoryDetail ? 'visible' : 'hidden'}" class="col-sm-6">
+        <app-time-category-details (updateTimeCategory)="updateTimeCategoryList($event)" (addTimeCategory)="addTimeCategoryList($event)"
+          (deleteTimeCategory)="onTimeCategoryDeleted($event)" (hideDetailPanel)="hideDetailPanel($event)"
+          [timeCategoryId]="timeCategoryId"></app-time-category-details>
+      </div>
+    </div>
+  </div>
+</div>

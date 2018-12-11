@@ -1,0 +1,425 @@
+<div class="row">
+  <h4 class="main_heading">Project Detail <a mat-href (click)="closeProgramAreaSectorModal()" class="pull-right">x</a></h4>
+</div>
+<div class="row" id="Programareasector">
+  <div class="col-sm-12">
+    <div class="class form-group">
+      <div class="col-sm-6">
+        <div class="form-group ">
+          <!-- <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" pInputText #opportunityNoID name="opportunityNo" [(ngModel)]="opportunityNo"
+              (focusout)="onProjectotherDetailsChange($event,opportunityNoID.value)">
+          </span> -->
+
+          <mat-form-field class="example-full-width">
+            <input matInput #opportunityNoID type="text" [(ngModel)]="projectotherDetail.opportunityNo" maxlength="150"
+              placeholder="Opportunity No" name="opportunityNo" [formControl]="opportunityNo" (focusout)="onProjectotherDetailsChange('opportunityNo',opportunityNoID.value)" />
+            <mat-hint align="left">{{opportunityNoID.value.length}}</mat-hint>
+            <mat-error *ngIf="opportunityNo.hasError('required') && opportunityNo.hasError('pattern')" >
+              Opportunity number is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <!-- <label>Opportunity</label>
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" pInputText #Opportunity name="opportunity" [(ngModel)]="opportunity"
+              (focusout)="onProjectotherDetailsChange($event,Opportunity.value)">
+
+          </span> -->
+          <mat-form-field class="example-full-width">
+            <input matInput #Opportunity type="text" [(ngModel)]="projectotherDetail.opportunity" maxlength="150"
+              placeholder="Opportunity" name="opportunity" [formControl]="opportunity" (focusout)="onProjectotherDetailsChange('opportunity',Opportunity.value)" />
+            <mat-hint align="right">{{Opportunity.value.length}}</mat-hint>
+            <mat-error *ngIf="opportunity.hasError('required')">
+              Opportunity number is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="form-group ">
+      <!-- <label>Opportunity Description </label>
+      <span class="ui-float-label">
+        <textarea rows="5" cols="100" pInputTextarea #Opportunitydescription name="opportunitydescription" [(ngModel)]="opportunitydescription"
+          (focusout)="onProjectotherDetailsChange($event,Opportunitydescription.value)" autoResize="autoResize"></textarea>
+
+      </span> -->
+      <mat-form-field class="example-full-width">
+        <textarea matInput #Opportunitydescription type="text" [(ngModel)]="projectotherDetail.opportunitydescription"
+          placeholder="Opportunity Description" name="opportunitydescription" [formControl]="opportunitydescription"
+          (focusout)="onProjectotherDetailsChange('opportunitydescription',Opportunitydescription.value)"></textarea>
+        <mat-hint align="left">{{Opportunitydescription.value.length}}</mat-hint>
+        <mat-error *ngIf="opportunitydescription.hasError('required')">
+          Opportunity number is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="col-sm-6">
+      <h4>Province</h4>
+      <!-- <p-multiSelect [options]="Province" [(ngModel)]="projectotherDetail.ProvinceId" dropdownIcon="fa fa-fw fa-caret-down"
+        showHeader="true" (onChange)="onProjectotherDetailsChange('selectedProvince',Province)" [panelStyle]="{minWidth:'12em'}"
+        [overlayVisible]=true>
+      </p-multiSelect> -->
+      <p-multiSelect [options]="Province" [(ngModel)]="selectedProvince" name="selectedProvince" dropdownIcon="fa fa-fw fa-caret-down"
+      showHeader="true" (onChange)="onProjectotherDetailsChange('selectedProvince',selectedProvince)" [panelStyle]="{minWidth:'12em'}"
+      [overlayVisible]=true>
+    </p-multiSelect>
+
+
+    </div>
+    <div class="col-sm-6">
+      <h4>Select District</h4>
+      <p-multiSelect [options]="DistrictModel" [(ngModel)]="selectedDistrict" name="selectedDistrict" dropdownIcon="fa fa-fw fa-caret-down"
+       showHeader="true" (onChange)="onProjectotherDetailsChange('selectedDistrict',selectedDistrict)" [panelStyle]="{minWidth:'12em'}">
+      </p-multiSelect>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="col-sm-6">
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Office Name" aria-label="text" matInput
+          [matAutocomplete]="autoOfficelist" [(ngModel)]="OfficeName" />
+        <mat-autocomplete #autoOfficelist="matAutocomplete">
+          <mat-option *ngFor="let item of Officelist" [value]="item.OfficeName" (onSelectionChange)="onProjectotherDetailsChange('Office', item.OfficeName)">
+            {{item.OfficeName}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6">
+      <div class="autoComplete">
+        <p-autoComplete [(ngModel)]="Program" #autoComplete [suggestions]="Programvalue" (completeMethod)="filterProgramSingle($event)"
+          [size]="30" placeholder="Program" (onFocus)="true && autoComplete.handleDropdownClick() " (onSelect)="AddeditSelectProjectProgramvalue($event)">
+        </p-autoComplete>
+        <button type="button" (click)="AddProgram(Program)">+</button>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="col-sm-12">
+    <div class="col-sm-6">
+      <div class="autoComplete">
+        <p-autoComplete [(ngModel)]="Area" #autoCompleteArea [suggestions]="Areavalue" (completeMethod)="filterAreaSingle($event)"
+          [size]="30" placeholder="Area" (onFocus)="true && autoCompleteArea.handleDropdownClick() " (onSelect)="AddeditSelectAreaProgramvalue($event)"></p-autoComplete>
+        <button type="button" (click)="AddAreaDeatil(Area)">+</button>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="autoComplete">
+        <p-autoComplete [(ngModel)]="Sector" #autoCompletesector [suggestions]="Sectorvalue" (completeMethod)="filterSectorSingle($event)"
+          [size]="30" placeholder="Sector" (onFocus)="true && autoCompletesector.handleDropdownClick()" (onSelect)="AddeditSelectSectorvalue($event)"></p-autoComplete>
+        <button type="button" (click)="AddSectorDeatil(Sector)">+</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <div class="ui-g-12 ui-md-6">
+      <div class="form-group">
+        <span class="ui-float-label">
+          <!-- <p-calendar [(ngModel)]="  StartDate" name="startDate" (focusout)="onProjectotherDetailsChange($event,StartDate)"></p-calendar>
+          <label for="float-input">Start Date</label> -->
+          <mat-form-field>
+            <input matInput [(ngModel)]="projectotherDetail.StartDate" [matDatepicker]="picker6" placeholder="Start Date"
+              (dateChange)="onProjectotherDetailsChange('startDate',projectotherDetail.StartDate)" />
+            <mat-datepicker-toggle matSuffix [for]="picker6"></mat-datepicker-toggle>
+            <mat-datepicker #picker6></mat-datepicker>
+          </mat-form-field>
+
+
+        </span>
+      </div>
+    </div>
+
+    <div class="ui-g-12 ui-md-6">
+
+      <div class="form-group">
+        <span class="ui-float-label">
+          <!-- <p-calendar [(ngModel)]="EndDate" name="endDate" (focusout)="onProjectotherDetailsChange($event,EndDate)"></p-calendar>
+          <label for="float-input">End Date</label> -->
+          <mat-form-field>
+            <input matInput [(ngModel)]="projectotherDetail.EndDate" [matDatepicker]="picker3" placeholder="End Date"
+              (dateChange)="onProjectotherDetailsChange('endDate',projectotherDetail.EndDate)">
+            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
+          </mat-form-field>
+
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="col-sm-12">
+    <div class="col-sm-6">
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Currency Name" aria-label="Number" matInput
+          [matAutocomplete]="autoCurrencyList" />
+        <mat-autocomplete #autoCurrencyList="matAutocomplete">
+          <mat-option *ngFor="let item of CurrencyList" [value]="item.CurrencyCode" (onSelectionChange)="onProjectotherDetailsChange('Currency', item.CurrencyCode)">
+            {{item.CurrencyCode}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput #BudgetId type="text" [(ngModel)]="projectotherDetail.budget" maxlength="150" placeholder="Budget"
+            name="budget" [formControl]="budget" (focusout)="onProjectotherDetailsChange('budget',BudgetId.value)" />
+          <mat-hint align="right">{{BudgetId.value.length}}</mat-hint>
+          <mat-error *ngIf="budget.hasError('required')">
+            Budget is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div> -->
+  <div class="col-sm-12">
+
+    <div class="col-sm-6">
+      <div class="form-group ">
+        <!-- <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" [(ngModel)]="  beneficiaryMale" (focusout)="onProjectotherDetailsChange($event,beneficiaryMale)"
+              pInputText name="beneficiaryMale">
+            <label for="float-input">Direct Beneficiary Male</label>
+          </span> -->
+        <mat-form-field class="example-full-width">
+          <input matInput #BeneficiaryMaleId type="text" [(ngModel)]="projectotherDetail.beneficiaryMale" maxlength="150"
+            placeholder="Direct Beneficiary Male" name="beneficiaryMale" [formControl]="beneficiaryMale" (focusout)="onProjectotherDetailsChange('beneficiaryMale',BeneficiaryMaleId.value)" />
+          <mat-hint align="left">{{BeneficiaryMaleId.value.length}}</mat-hint>
+          <mat-error *ngIf="beneficiaryMale.hasError('required')">
+            Direct Beneficiary Male is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <!-- <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" pInputText [(ngModel)]="  beneficiaryFemale" name="beneficiaryFemale"
+              (focusout)="onProjectotherDetailsChange($event,beneficiaryFemale)">
+            <label for="float-input">Direct Beneficiary Female</label>
+          </span> -->
+        <mat-form-field class="example-full-width">
+          <input matInput #BeneficiaryFemaleId type="text" [(ngModel)]="projectotherDetail.beneficiaryFemale" maxlength="150"
+            placeholder="Direct Beneficiary Female" name="beneficiaryFemale" [formControl]="beneficiaryFemale"
+            (focusout)="onProjectotherDetailsChange('beneficiaryFemale',BeneficiaryFemaleId.value)" />
+          <mat-hint align="right">{{BeneficiaryFemaleId.value.length}}</mat-hint>
+          <mat-error *ngIf="beneficiaryFemale.hasError('required')">
+            Direct Beneficiary Female is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-sm-12">
+
+    <div class="col-sm-6">
+      <div class="form-group ">
+        <!-- <span class="ui-float-label">
+          <input id="float-input" type="text" size="30" [(ngModel)]="  projectGoal" (focusout)="onProjectotherDetailsChange($event,projectGoal)"
+            pInputText name="projectGoal">
+          <label for="float-input">Project Goal</label>
+        </span> -->
+        <mat-form-field class="example-full-width">
+          <input matInput #ProjectGoalID type="text" [(ngModel)]="projectotherDetail.projectGoal" maxlength="150"
+            placeholder="Project Goal" name="projectGoal" [formControl]="projectGoal" (focusout)="onProjectotherDetailsChange('projectGoal',ProjectGoalID.value)" />
+          <mat-hint align="left">{{ProjectGoalID.value.length}}</mat-hint>
+          <mat-error *ngIf="projectGoal.hasError('required')">
+            Project Goal is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <!-- <span class="ui-float-label">
+          <input id="float-input" type="text" size="30" pInputText [(ngModel)]="  projectObjective" name="projectObjective"
+            (focusout)="onProjectotherDetailsChange($event,projectObjective)">
+          <label for="float-input">Project Objective</label>
+        </span> -->
+        <mat-form-field class="example-full-width">
+          <input matInput #ProjectObjectiveID type="text" [(ngModel)]="projectotherDetail.projectObjective" maxlength="150"
+            placeholder="Project Objective" name="projectObjective" [formControl]="projectObjective" (focusout)="onProjectotherDetailsChange('projectObjective',ProjectObjectiveID.value)" />
+          <mat-hint align="left">{{ProjectObjectiveID.value.length}}</mat-hint>
+          <mat-error *ngIf="projectObjective.hasError('required')">
+            Project Objective is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-sm-12">
+    <div class="class form-group">
+      <div class="col-sm-6">
+        <div class="form-group ">
+          <!-- <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" pInputText [(ngModel)]="  mainActivities" name="mainActivities"
+              (focusout)="onProjectotherDetailsChange($event,mainActivities)">
+            <label for="float-input">Main Activities</label>
+          </span> -->
+          <mat-form-field class="example-full-width">
+            <input matInput #MainActivitiesID type="text" [(ngModel)]="projectotherDetail.mainActivities" maxlength="150"
+              placeholder="Main Activities" name="mainActivities" [formControl]="mainActivities" (focusout)="onProjectotherDetailsChange('mainActivities',MainActivitiesID.value)" />
+            <mat-hint align="left">{{MainActivitiesID.value.length}}</mat-hint>
+            <mat-error *ngIf="mainActivities.hasError('required')">
+              Main Activities is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="autoComplete">
+        </div>
+        <mat-form-field class="example-full-width">
+          <input type="text" placeholder="Donor Name" aria-label="Number" matInput [(ngModel)]="DonorName"
+            [matAutocomplete]="autoDonorList" />
+          <mat-autocomplete #autoDonorList="matAutocomplete">
+            <mat-option *ngFor="let item of DonorList" [value]="item.Name" (onSelectionChange)="onProjectotherDetailsChange('Donor', item.Name)">
+              {{item.Name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <div class="ui-g-12 ui-md-6">
+      <div class="form-group">
+        <label for="float-input">REOI Receive Date</label>
+        <span class="ui-float-label">
+          <!-- <p-calendar [(ngModel)]="REOIReceiveDate" (focusout)="onProjectotherDetailsChange($event,REOIReceiveDate)"
+            name="rEOIReceiveDate"></p-calendar> -->
+          <mat-form-field>
+            <input matInput [(ngModel)]="projectotherDetail.REOIReceiveDate" [matDatepicker]="picker4" placeholder="Choose a date"
+              (dateChange)="onProjectotherDetailsChange('rEOIReceiveDate',REOIReceiveDate)" />
+            <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+            <mat-datepicker #picker4></mat-datepicker>
+          </mat-form-field>
+
+        </span>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-md-6">
+
+      <div class="form-group">
+        <label for="float-input">Submission Date</label>
+        <span class="ui-float-label">
+          <!-- <p-calendar [(ngModel)]="SubmissionDate" name="submissionDate" (onSelect)="onProjectotherDetailsChange($event,SubmissionDate)"></p-calendar> -->
+          <mat-form-field>
+            <input matInput [(ngModel)]="projectotherDetail.SubmissionDate" [matDatepicker]="picker" placeholder="Choose a date"
+              (dateChange)="onProjectotherDetailsChange('submissionDate',SubmissionDate)">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="col-sm-6">
+      <h3>Gender Consideration</h3>
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Strength Consideration" aria-label="Number" matInput [(ngModel)]="Strength"
+          [matAutocomplete]="autostrengthlist" />
+        <mat-autocomplete #autostrengthlist="matAutocomplete">
+          <mat-option *ngFor="let item of strengthlist" [value]="item.StrengthConsiderationName" (onSelectionChange)="onProjectotherDetailsChange('strength', item.StrengthConsiderationName)">
+            {{item.StrengthConsiderationName}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6">
+      <h3>Security Consideration</h3>
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Security Consideration" aria-label="text" matInput [(ngModel)]="SecurityName"
+          [matAutocomplete]="autoSecuritylist" />
+        <mat-autocomplete #autoSecuritylist="matAutocomplete">
+          <mat-option *ngFor="let item of Securitylist" [value]="item.SecurityName" (onSelectionChange)="onProjectotherDetailsChange('Security', item.SecurityName)">
+            {{item.SecurityName}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <div class="col-sm-6">
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Gender Consideration" aria-label="Number" matInput [(ngModel)]="GenderConsiderationName"
+          [matAutocomplete]="auto" />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let item of GenderConsiderationvaluelist" [value]="item.GenderConsiderationName"
+            (onSelectionChange)="onProjectotherDetailsChange('genderConsideration', item.GenderConsiderationName)">
+            {{item.GenderConsiderationName}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <p-multiSelect [options]="SecurityConsideration" dropdownIcon="fa fa-fw fa-caret-down" showHeader="true"
+          defaultLabel="Security Consideration" [(ngModel)]="selectedSecurityConsideration" name="selectedSecurityConsideration"
+          (onChange)="onProjectotherDetailsChange('selectedSecurityConsideration',projectotherDetail.SecurityConsiderationId)"
+          [panelStyle]="{minWidth:'12em'}">
+        </p-multiSelect>
+      </div>
+      <!-- <span>Security Consideration</span> -->
+      <br>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <!-- <span class="ui-float-label">
+                    <input id="float-input" type="text" size="30" pInputText [(ngModel)]="  GenderRemarks" name="genderRemarks"
+                      (focusout)="onProjectotherDetailsChange($event,GenderRemarks)">
+                    <label for="float-input">Gender Remarks</label>
+                  </span> -->
+        <mat-form-field class="example-full-width">
+          <input matInput #GenderRemarksID type="text" [(ngModel)]="projectotherDetail.GenderRemarks" maxlength="150"
+            placeholder="Gender Remarks" name="GenderRemarks" [formControl]="GenderRemarks" (focusout)="onProjectotherDetailsChange('GenderRemarks',GenderRemarksID.value)" />
+          <mat-hint align="left">{{GenderRemarksID.value.length}}</mat-hint>
+          <mat-error *ngIf="GenderRemarks.hasError('required')">
+            Gender Remarks is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <!-- <span class="ui-float-label">
+                <input id="float-input" type="text" size="30" pInputText [(ngModel)]="  SecurityRemarks" name="securityRemarks"
+                  (focusout)="onProjectotherDetailsChange($event,SecurityRemarks)">
+                <label for="float-input">Security Remarks</label>
+              </span> -->
+        <mat-form-field class="example-full-width">
+          <input matInput #SecurityRemarksID type="text" [(ngModel)]="projectotherDetail.SecurityRemarks" maxlength="150"
+            placeholder="Security Remarks" name="SecurityRemarks" [formControl]="SecurityRemarks" (focusout)="onProjectotherDetailsChange('SecurityRemarks',SecurityRemarksID.value)" />
+          <mat-hint align="right">{{SecurityRemarksID.value.length}}</mat-hint>
+          <mat-error *ngIf="SecurityRemarks.hasError('required')">
+            Security Remarks is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>

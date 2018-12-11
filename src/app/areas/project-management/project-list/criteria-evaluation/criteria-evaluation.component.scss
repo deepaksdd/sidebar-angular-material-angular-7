@@ -1,0 +1,32 @@
+.body_scroll11{
+overflow: auto;
+
+
+}
+.funding-box-wrap { background-color:#efefef;padding:20px; list-style:none;}
+.funding-method-status-wrap ul { padding-left:0;list-style:none;}
+.proposal-header{text-align: center;}
+:host /deep/ .sector-and-funding-status-wrap-ul ul li {
+    display:inline-block;
+    margin-right:10px;
+    &:last-child {   
+        display:block;
+        padding-right:30px;
+        .mat-form-field-wrapper { 
+            max-width:500px;
+            margin:0 auto;
+            textarea { 
+                background-color:#fff;
+                padding:10px;
+            }
+        }
+    }
+}
+
+.funding-box{padding-left:0;}
+.capacity-available-compensation ul {padding-left: 0}
+.target-Beneficiary-wrap ul li {display: inline-block; padding-left:0;list-style:none;}
+.capacity-available-compensation ul li{ padding: 4px;list-style:none;}
+.disabling-condition-wrap ul li{display: inline-block; list-style: none; padding: 4px;}
+.priority-condition-wrap ul li{display: inline-block; list-style: none; padding-left:0 }
+ .priority-condition-wrap ul{padding-left: 0;}

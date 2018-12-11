@@ -1,0 +1,107 @@
+<div class="body-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div [class]="colsm6">
+        <mat-card>
+          <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+            <!-- modal-dialog -->
+            <div class="modal-dialog modal-filter" role="document">
+              <!-- modal-content -->
+              <div class="modal-content">
+
+                <!-- modal-body -->
+                <div class="modal-body">
+                  <button type="button" class="close" aria-label="Close" (click)="closeModalDialog()"><span aria-hidden="true">&times;</span></button>
+                  <label>Clients</label> &nbsp; &nbsp;<i (click)="RefreshFilters()" class="fa fa-refresh"></i>
+                  <form [formGroup]="filtersForm">
+
+                    <input #clientIds (blur)="onChange('clientId',clientIds.value)" formControlName="clientId" type="text" class="form-control"
+                      placeholder="Search By Id" />
+                    <br>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <small>Email</small>
+                        <input #emailId (blur)="onChange('email',emailId.value)" formControlName="email" matInput placeholder="Email" class="form-control"
+                        />
+                      </div>
+                      <div class="col-sm-6">
+                        <small>Category</small>
+                        <select #categoryId (change)="onChange('category',categoryId.value)" formControlName="category" placeholder="Category">
+                          <option *ngFor="let food of categories" [value]="food.CategoryId">
+                            {{food.CategoryName}}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <small>Position</small>
+                        <input #positionId (blur)="onChange('position',positionId.value)" formControlName="position" matInput placeholder="Position"
+                          class="form-control" />
+                      </div>
+                      <div class="col-sm-6">
+                        <small>Client</small>
+                        <select (change)="onChange('clientName',clientNameId.value)" placeholder="Client" #clientNameId formControlName="clientName">
+                          <option *ngFor="let contract of clientListDetails" [value]="contract.ClientName">{{contract.ClientName}}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <!-- <br />
+                    <div class="filter-btn-wrap">
+                      <button type="submit">Filter</button>
+                    </div>
+                    <br> -->
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-details">
+            <h4 class="main_heading bdr_heading">CLIENTS LIST<a (click)="openModalFilter()"><i class="fa fa-cog black_icon pull-right"></i></a></h4>
+          </div>
+          <div class="responsive_table-responsive">
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <td width="5%"></td>
+                  <td width="40%"><a class="add_new" (click)="onItemClick(0)">Add New....</a></td>
+                  <td width="20%"></td>
+                  <td width="20%"></td>
+                  <td width="7%"></td>
+                </tr>
+                <tr (click)="onItemClick(clients.ClientId)" *ngFor="let clients of clientListDetails">
+                  <td class="grey-text" width="5%">{{clients.ClientCode}}/{{clients.ClientId}}</td>
+                  <td width="40%" text-align="left">
+                    <p class="diamond">{{clients.ClientName}}</p>
+                  </td>
+                  <td class="text-right" width="10%">{{clients.Phone}}</td>
+                  <td class="text-left" width="30%">
+                    <!-- <p class="diamond">{{db.Medium}}</p> -->
+                  </td>
+                  <td class="" width="7"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </mat-card>
+      </div>
+
+      <div [ngStyle]="{'visibility': showClientDetail ? 'visible' : 'hidden'}" class="col-sm-6">
+        <app-client-details [clientId]="clientId" (updateClientList)="updateClientListById($event)" (addClientList)="addClientListById($event)"
+          (deleteClient)="onClientDeleted($event)" (hideDetailPanel)="hideDetailPanel($event)"></app-client-details>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .mat-card .modal {
+    position: absolute;
+    left: auto;
+    bottom: auto;
+    top: 20px;
+    right: 15px;
+  }
+</style>

@@ -1,0 +1,163 @@
+<div class="project-details-main">
+
+  <!-- <app-dbheader [selectedHeader]="setSelectedHeader" [headerName]="setProjectHeader"></app-dbheader> -->
+
+  <div class="body_scroll">
+    <div class="body-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1">
+            <mat-card>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="tab-content">
+                    <div id="details" class="tab-pane fade in active">
+                      <div class="project-details mar_tp_20 bdr_btm pad_btm_25">
+                        <div class="row">
+                          <div class="col-sm-8 ">
+                            <div class="form-group">
+                              <!-- <input matInput placeholder="Project Name" value="Project Name"> -->
+
+                              <input matInput class="form-control project_input" #projectName placeholder="Project Name" [disabled]="false" [ngModel]="projectDetail.ProjectName"
+                                (focusout)="onNameChange($event,projectName.value)" name="projectName">
+                            </div>
+
+                          </div>
+                          <div class="col-sm-2">
+                          </div>
+                          <div class="col-sm-2">
+                            <h4 class="main_heading"> <a mat-href (click)="openFormModal(0)"><i class="fa fa-cog black_icon pull-right"></i></a></h4>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-8">
+                            <div class="row">
+                              <div class="col-sm-1"><a href="#" class="grey_icon"><i class="fa fa-align-left"></i></a></div>
+                              <div class="col-sm-11">
+                                <div class="form-group">
+                                  <textarea class="form-control text_manage" matInput #projectDescription placeholder="Project Description Text" (focusout)="onNameChange($event,projectDescription.value)"
+                                    [ngModel]="projectDetail.ProjectDescription" name="projectDescription"></textarea>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-4">
+                            <div class="row">
+                              <div class="row">
+                                <div *ngIf="completeProp && projectDetail.ProjectId>0" class="col-sm-12">
+                                  <a class="asign_check" (click)="checkProposal()">Complete Proposal</a>
+                                </div>
+
+                              </div>
+                              <div class="col-sm-6" *ngIf="assignedTowin">
+                                <a class="asign_check"><i class="fas fa-clipboard-check"></i>Assigned to User Name</a>
+                              </div>
+                              <div class="col-sm-6" *ngIf="assignedTowinBlue">
+                                <a class="asign_check blue" (click)="openPropsalWinComponent()"><i class="fas fa-clipboard-check"></i>Assigned
+                                  to User Name</a>
+                              </div>
+
+                              <div *ngIf="assignToUsershow" class="col-sm-6">
+                                <a class="asign_check"><i class="fas fa-file-alt"></i>Assigned to User Name</a>
+                              </div>
+                              <div *ngIf="assignToBlueclicked" class="col-sm-6">
+                                <a class="asign_check blue" (click)="openPropsalComponent()"><i class="fas fa-file-alt"></i>Assigned
+                                  to User Name</a>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="row" *ngIf="openProposalcompcheck">
+                        <app-accept-proposal [projectId]="projectId" [winProjectFlag]="winProjectFlag" (appovalData)="OnapprovelAdd($event,true)"
+                          (rejectedApproval)="OnapprovelAdd($event,false)" (winApproval)="OnWinApproval($event,true)" (lossApproval)="OnWinApproval($event,false)"></app-accept-proposal>
+                      </div>
+                      <div class="notification_div mar_tp_20">
+                        <ul>
+                          <li class="active_notify"><a ng-href="#"><b>Hamza Rahimy</b> created project. 28 june at 3:00 .</a></li>
+                          <li><a ng-href="#"><b>Hamza Rahimy</b> assigned a <b> User name</b> as a <b>Role name</b>. 28 june
+                              at 3:00
+                            </a></li>
+                        </ul>
+                      </div>
+                      <!-- <div class="comment-text">
+                        <div class="user_name">
+                          <p>HR</p>
+                        </div>
+                        <div class="user_text">
+                          <p> <b>Hamza Rahimy</b> 28 june at 3:00 .</p>
+                          <p> This is rich comment text. <b> This is rich comment text.</b><span class="italic_undeline"> This
+                              is rich comment text.</span></p>
+                          <div class="listing">
+                            <ol>
+                              <li>This is number line text.</li>
+                              <li>This is number line text.</li>
+                              <li>This is number line text.</li>
+                            </ol>
+                            <ul>
+                              <li>This is bullet text.</li>
+                              <li>This is bullet text.</li>
+                              <li>This is bullet text.</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div> -->
+                      <div class="comment-text">
+                        <div class="user_name">
+                          <p>HR</p>
+                        </div>
+                        <div class="user_text">
+                          <p> <b>Hamza Rahimy</b> 28 june at 3:00 .</p>
+                          <ul class="documents clearfix">
+                            <li><a href="#">
+                                <mat-card>
+                                  <i class="fas fa-file-alt blue"></i>
+                                  <p>text .. </p>
+                                </mat-card>
+
+                              </a></li>
+                            <li><a href="#">
+                                <mat-card>
+                                  <i class="fas fa-file-excel green"></i>
+                                  <p>text .. </p>
+                                </mat-card>
+
+                              </a></li>
+                            <li><a href="#">
+                                <mat-card>
+                                  <i class="fas fa-file-word red"></i>
+                                  <p>text .. </p>
+                                </mat-card>
+
+                              </a></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <app-chatbox></app-chatbox>
+                    </div>
+                    <div id="metadata" class="tab-pane fade">
+                      <app-metadata></app-metadata>
+                    </div>
+                    <div id="proposal" class="tab-pane fade">
+                      <app-proposal></app-proposal>
+                    </div>
+                    <div id="biddingCommittee" class="tab-pane fade">
+                      <app-bidding-committee></app-bidding-committee>
+                    </div>
+                    <div id="budgetLines" class="tab-pane fade">
+                      <app-budgetlines></app-budgetlines>
+                    </div>
+                    <div id="criteriaEvaluation" class="tab-pane fade">
+                      <app-criteria-evaluation [projectId]="projectId"></app-criteria-evaluation>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

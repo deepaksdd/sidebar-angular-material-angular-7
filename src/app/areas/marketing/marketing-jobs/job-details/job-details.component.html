@@ -1,0 +1,335 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <mat-card>
+        <div class="row">
+          <div class="col-sm-5">
+            <mat-form-field class="example-full-width">
+              <input matInput #jobName placeholder="Job Name" [disabled]="false" maxlength="5" [ngModel]="jobDetails.JobName"
+                (blur)="onJobDetailUpdate('jobName',jobName.value)" name="jobName">
+            </mat-form-field>
+          </div>
+
+          <div class="col-sm-5 pull-right">
+            <h4 class="main_heading"> <a title="Reject Job" href="#"><i style="color:red" class="fa fa-trash pull-right"></i></a></h4>
+            <h4 class="main_heading"> <a title="Approve" href="#"><i style="color:green" class="fa fa-check pull-right"></i></a></h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-1">
+            <span><img src="../../../../../assets/img/recipt.jpg" style="width:30px" alt="Avatar"> </span>
+          </div>
+          <div class="col-sm-5">
+            <mat-form-field style="width:70%;float:right">
+              <input class="form-control" #endDate class="fixedWidth" formControlName="startDate" matInput
+                [matDatepicker]="picker" placeholder="End Date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <input class="form-control" placeholder="Contract" />
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-sm-3">
+            <input class="form-control" placeholder="Minutes" />
+          </div>
+          <div class="col-sm-1">
+            <span class="fa fa-close"></span>
+          </div>
+          <div class="col-sm-4">
+            <input class="form-control" placeholder="Rate" />
+            <p>Contract Rate &nbsp;<label>Rate</label></p>
+          </div>
+          <div class="col-sm-1">
+            <i class="fas fa-equals"></i>
+          </div>
+          <div class="col-sm-3">
+            <input class="form-control" placeholder="Total" />
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row" align="center">
+          <p><label>SUMMARY</label></p>
+          <div class="col-sm-3">
+              <input class="form-control" placeholder="Final Price" />
+          </div>
+          <div class="col-sm-3">
+              <input class="form-control" placeholder="Final Rate" />
+          </div>
+          <div class="col-sm-3">
+              <input class="form-control" placeholder="Contract" />
+          </div>
+          <div class="col-sm-3">
+              <input class="form-control" placeholder="Contract" />
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-sm-4">
+            <span style="float:right" class="fa fa-eye"></span>
+          </div>
+          <div class="col-sm-4">
+            <a>AGREEMENT</a>
+          </div>
+          <div class="col-sm-4">
+            <span class="fa fa-check" style="color:green"></span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4">
+              <span style="float:right" class="fa fa-eye"></span>
+          </div>
+          <div class="col-sm-4">
+              <a>INVOICE</a>
+          </div>
+          <div class="col-sm-4">
+              <span class="fa fa-check" style="color:green"></span>
+          </div>
+        </div>
+
+        <!-- <div class="row">
+  <div class="col-sm-4">
+      <div class="md-form">
+          <i class="fa fa-envelope prefix"></i>
+          <input mdbInputDirective type="text" id="form2" class="form-control">
+          <label for="form2">Example label</label>
+        </div>140
+  </div>
+</div> -->
+
+        <!-- <div class="row">
+          <div class="col-sm-8">
+            <mat-form-field class="example-full-width">
+              <input matInput #jobCode placeholder="Job Code" [disabled]="false" maxlength="5" [ngModel]="jobDetails.JobCode"
+                (blur)="onJobDetailUpdate('jobCode',jobCode.value)" name="jobCode">
+            </mat-form-field>
+
+          </div>
+          <div class="col-sm-4">
+            <h4 class="main_heading"> <a href="#"><i class="fa fa-cog black_icon pull-right"></i></a></h4>
+          </div>
+        </div> -->
+
+        <!-- <div class="row">
+          <div class="col-sm-8">
+            <mat-form-field class="example-full-width">
+              <input matInput #jobDescription placeholder="Description" [disabled]="false" maxlength="5" [ngModel]="jobDetails.JobDescription"
+                (blur)="onJobDetailUpdate('jobDescription',jobDescription.value)" name="jobDescription">
+            </mat-form-field>
+
+          </div>
+          <div class="col-sm-4">
+            <h4 class="main_heading"> <a href="#"><i class="fa fa-cog black_icon pull-right"></i></a></h4>
+          </div>
+        </div> -->
+
+        <!-- <div class="row">
+          <div class="col-sm-8">
+            <mat-form-field class="example-full-width">
+              <mat-select placeholder="Job Phase" name="phase" (selectionChange)="onJobDetailUpdate('phase',$event.value)">
+                <mat-option *ngFor="let phase of phases" [value]="phase.JobPhaseId">
+                  {{phase.Phase}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+          <div class="col-sm-4">
+            <h4 class="main_heading"> <a href="#"><i class="fa fa-cog black_icon pull-right"></i></a></h4>
+          </div>
+        </div> -->
+
+        <!-- <div class="row">
+          <div class="col-sm-8">
+            <mat-form-field class="example-full-width">
+              <mat-select placeholder="Contract" name="contract" (selectionChange)="onJobDetailUpdate('contract',$event.value)">
+                <mat-option *ngFor="let contract of contracts" [value]="contract.ContractId">
+                  {{contract.ClientName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+          <div class="col-sm-4">
+            <h4 class="main_heading"> <a href="#"><i class="fa fa-cog black_icon pull-right"></i></a></h4>
+          </div>
+        </div> -->
+
+        <!-- <div class="row">
+          <div class="col-sm-8">
+            <mat-form-field class="example-full-width">
+              <input matInput #unitRate placeholder="Unit Rate" [disabled]="false" maxlength="5" [ngModel]="jobDetails.UnitRate"
+                (blur)="onJobDetailUpdate('unitRate',unitRate.value)" name="unitRate">
+            </mat-form-field>
+
+          </div>
+          <div class="col-sm-4">
+            <h4 class="main_heading"> <a href="#"><i class="fa fa-cog black_icon pull-right"></i></a></h4>
+          </div>
+        </div> -->
+
+        <!-- 
+        <div class="row">
+          <div class="col-sm-8">
+            <mat-form-field class="example-full-width">
+              <input matInput #unitPrice placeholder="Unit Price" [disabled]="false" maxlength="5" [ngModel]="jobDetails.UnitPrice"
+                (blur)="onJobDetailUpdate('unitPrice',unitPrice.value)" name="unitPrice">
+            </mat-form-field>
+
+          </div>
+          <div class="col-sm-4">
+            <h4 class="main_heading"> <a href="#"><i class="fa fa-cog black_icon pull-right"></i></a></h4>
+          </div>
+        </div> -->
+
+        <!-- <div class="row">
+          <div class="col-sm-8">
+            <mat-form-field class="example-full-width">
+              <input matInput #finalRate placeholder="Final Rate" [disabled]="false" maxlength="5" [ngModel]="jobDetails.FinalRate"
+                (blur)="onJobDetailUpdate('finalRate',finalRate.value)" name="finalRate">
+            </mat-form-field>
+
+          </div>
+          <div class="col-sm-4">
+            <h4 class="main_heading"> <a href="#"><i class="fa fa-cog black_icon pull-right"></i></a></h4>
+          </div>
+        </div> -->
+
+        <!-- <div class="row">
+          <div class="col-sm-8">
+            <mat-form-field class="example-full-width">
+              <input matInput #finalPrice placeholder="Final Price" [disabled]="false" maxlength="5" [ngModel]="jobDetails.FinalPrice"
+                (blur)="onJobDetailUpdate('finalPrice',finalPrice.value)" name="finalPrice">
+            </mat-form-field>
+
+          </div>
+          <div class="col-sm-4">
+            <h4 class="main_heading"> <a href="#"><i class="fa fa-cog black_icon pull-right"></i></a></h4>
+          </div>
+        </div> -->
+
+        <!-- <div class="row">
+          <div class="col-sm-8">
+            <mat-form-field class="example-full-width">
+              <input matInput #totalPrice placeholder="Total Price" [disabled]="false" maxlength="5" [ngModel]="jobDetails.TotalPrice"
+                (blur)="onJobDetailUpdate('totalPrice',totalPrice.value)" name="totalPrice">
+            </mat-form-field>
+
+          </div>
+          <div class="col-sm-4">
+            <h4 class="main_heading"> <a href="#"><i class="fa fa-cog black_icon pull-right"></i></a></h4>
+          </div>
+        </div> -->
+
+        <!-- <div class="row">
+          <div class="col-sm-8">
+            <mat-form-field class="example-full-width">
+              <input matInput #discount placeholder="Discount" [disabled]="false" maxlength="5" [ngModel]="jobDetails.Discount"
+                (blur)="onJobDetailUpdate('discount',discount.value)" name="discount">
+            </mat-form-field>
+
+          </div>
+          <div class="col-sm-4">
+            <h4 class="main_heading"> <a href="#"><i class="fa fa-cog black_icon pull-right"></i></a></h4>
+          </div>
+        </div> -->
+
+        <!-- <div class="row">
+          <div class="col-sm-8">
+            <mat-form-field class="example-full-width">
+              <input matInput #discountPercent placeholder="Discount Percent" [disabled]="false" maxlength="5"
+                [ngModel]="jobDetails.DiscountPercent" (blur)="onJobDetailUpdate('discountPercent',discountPercent.value)"
+                name="discountPercent">
+            </mat-form-field>
+
+          </div>
+          <div class="col-sm-4">
+            <h4 class="main_heading"> <a href="#"><i class="fa fa-cog black_icon pull-right"></i></a></h4>
+          </div>
+        </div> -->
+        <div class="notification_div mar_tp_20">
+          <ul>
+            <li class="active_notify"><a ng-href="#"><b>Hamza Rahimy</b> created project. 28 june at 3:00 .</a></li>
+            <li><a ng-href="#"><b>Hamza Rahimy</b> assigned a <b> User name</b> as a <b>Role name</b>. 28 june
+                at 3:00
+              </a></li>
+
+          </ul>
+        </div>
+        <div class="comment-text">
+          <div class="user_name">
+            <p>HR</p>
+          </div>
+          <div class="user_text">
+            <p> <b>Hamza Rahimy</b> 28 june at 3:00 .</p>
+            <p> This is rich comment text. <b> This is rich comment text.</b><span class="italic_undeline"> This
+                is rich comment text.</span></p>
+            <div class="listing">
+              <ol>
+                <li>This is number line text.</li>
+                <li>This is number line text.</li>
+                <li>This is number line text.</li>
+              </ol>
+              <ul>
+                <li>This is bullet text.</li>
+                <li>This is bullet text.</li>
+                <li>This is bullet text.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="comment-text">
+          <div class="user_name">
+            <p>HR</p>
+          </div>
+          <div class="user_text">
+            <p> <b>Hamza Rahimy</b> 28 june at 3:00 .</p>
+            <ul class="documents clearfix">
+              <li><a href="#">
+                  <mat-card>
+                    <i class="fas fa-file-alt blue"></i>
+                    <p>text .. </p>
+                  </mat-card>
+
+                </a></li>
+              <li><a href="#">
+                  <mat-card>
+                    <i class="fas fa-file-excel green"></i>
+                    <p>text .. </p>
+                  </mat-card>
+
+                </a></li>
+              <li><a href="#">
+                  <mat-card>
+                    <i class="fas fa-file-word red"></i>
+                    <p>text .. </p>
+                  </mat-card>
+
+                </a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="notification_div mar_tp_20 pad_btm_25">
+          <ul>
+            <li><a ng-href="#"><b>Hamza Rahimy</b> created project. 28 june at 3:00 ,</a></li>
+            <li><a ng-href="#"><b>Hamza Rahimy</b> assigned a <b> User name</b> as a <b>Role name</b>. 28 june
+                at 3:00
+              </a></li>
+
+          </ul>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

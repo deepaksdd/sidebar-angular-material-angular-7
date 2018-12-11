@@ -1,0 +1,160 @@
+<!-- <mat-dialog-content class="mat-typography"> -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="top-header clearfix">
+                    <h3>Add Donor</h3>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="clearfix">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                        Archive
+                    </button>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <a (click)="valueChanged()" class="back_arrow"> <i class="fa fa-arrow-left"></i></a>
+            </div>
+        </div>
+
+        <form name="donorForm" [formGroup]="donorForm" novalidate>
+            <!-- <form name="donorForm" [formGroup]="donorForm" (ngSubmit)="onSubmitDonarDetail(donorForm.value)" novalidate> -->
+            <div class="form-group">
+                <label for="Name">Donor Name</label>
+                <input type="text" class="form-control" name="Name" formControlName="Name" required />
+                <!-- <div *ngIf="donorForm.onSubmitDonarDetail && Name.invalid" class="invalid-feedback">
+                                  <div *ngIf="Name.errors.required"> Name is required</div>
+                              </div> -->
+            </div>
+            <div class="form-group">
+                <label for="ContactDesignation">Donor Contact Designation</label>
+                <input type="text" class="form-control" name="ContactDesignation" formControlName="ContactDesignation"
+                    required />
+                <!-- <div *ngIf="donorForm.submitted && ContactDesignation.invalid" class="invalid-feedback">
+                                  <div *ngIf="ContactDesignation.errors.required">Last Name is required</div>
+                              </div> -->
+            </div>
+            <div class="form-group">
+                <label for="ContactPersonEmail">Donor Contact Person Email</label>
+                <input type="text" class="form-control" name="ContactPersonEmail" formControlName="ContactPersonEmail"
+                    required />
+                <!-- <div class="invalid-feedback">
+                    <div *ngIf="ContactPersonEmail.errors.required">Donor Contact Person Email is required</div>
+                    <div *ngIf="ContactPersonEmail.errors.email">Email must be a valid email address</div>
+                </div> -->
+                <!-- <div class="alert  alert-danger" *ngIf="donorForm.get('ContactPersonEmail').hasError('required') && loginForm.get('ContactPersonEmail').touched">
+                                Email is required
+                               </div>  -->
+            </div>
+            <div class="form-group">
+                <label for="ContactPerson">Donor Contact Person Name</label>
+                <input type="text" class="form-control" name="ContactPerson" formControlName="ContactPerson" required />
+                <!-- <div *ngIf="donorForm.submitted && ContactPerson.invalid" class="invalid-feedback">
+                                  <div *ngIf="ContactPerson.errors.required">Donor Contact Person is required</div>                                  
+                              </div> -->
+            </div>
+            <div class="form-group">
+                <label for="ContactPersonCell">Contact Person Cell</label>
+                <input type="text" class="form-control" name="ContactPersonCell" formControlName="ContactPersonCell"
+                    required minlength="10" />
+                <!-- <div *ngIf="donorForm.submitted && ContactPersonCell.invalid" class="invalid-feedback"> -->
+                    <!-- <div *ngIf="ContactPersonCell.invalid" class="invalid-feedback">
+                    <div *ngIf="ContactPersonCell.errors.required">Contact Person Cell is required</div>
+                    <div *ngIf="ContactPersonCell.errors.minlength">Contact Person Cell must be at least 10 numbers</div> -->
+                <!-- </div> -->
+            </div>
+            <div class="form-group">
+                <!-- <div class="col-sm-3 col-sm-offset-0 ">
+                              <button class="btn btn-primary" [disabled]="!donorForm.valid ">Submit</button>
+                            </div> -->
+                <!-- <div class="col-sm-3 col-sm-offset-0 ">
+                              <button class="btn btn-primary" type="button" (click)="valueChanged()">Cancel</button>
+                            </div> -->
+            </div>
+        </form>
+
+
+    </div>
+</div>
+<!-- <div class="col-sm-10 col-sm-offset-1">
+                      <mat-card>
+                          <div class="donor-master">
+                              <h4 class="main_heading">Add Donor 
+                               
+                              </h4>
+                            </div>
+                  
+                <form [formGroup]="donorForm"
+                novalidate>
+                    <mat-form-field class="example-full-width">
+                     <input matInput formControlName="Name"
+                           
+                            placeholder="Donar Name">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <input matInput formControlName="ContactDesignation"
+                         placeholder="Donar Contact Designation" 
+                          >
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <input matInput formControlName="ContactPerson"
+                         placeholder="Donar Contact Person " 
+                          >
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width">
+                          <input matInput formControlName="ContactPersonCell"
+                           placeholder="Contact Person Cell" 
+                            >
+                        </mat-form-field>
+                      <mat-form-field class="example-full-width">
+                          <input matInput formControlName="ContactPersonEmail"
+                          placeholder="Donar Contact Person Email" 
+                         
+                            >
+                                                  
+                           <mat-error *ngIf="ContactPersonEmail.hasError('email') && !ContactPersonEmail.hasError('required')">
+                              Email is required
+                          </mat-error>
+                         <mat-error *ngIf="ContactPersonEmail.hasError('required')">
+                            Please enter a valid <strong>email</strong> address 
+                         </mat-error> 
+                            
+                       </mat-form-field>
+                       <mat-dialog-actions align="end">
+                          <button mat-button mat-dialog-close>Cancel</button>
+                          <button mat-button (click)="onSubmitDonarDetail(donorForm)"> submit</button>
+                         
+                        </mat-dialog-actions>
+                  </form>
+                      </mat-card>
+                </div> -->
+<!-- Button trigger modal -->
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure to want to delete this record?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="DeleteDonarById()">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,108 @@
+<div class="donor-master-list-main">
+
+  <!-- <app-dbheader [selectedHeader]="setSelectedHeader" [headerName]="setProjectHeader"></app-dbheader> -->
+
+  <div class="body-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div [class]="colsm6">
+          <mat-card>
+            <div class="project-details">
+              <h4 class="main_heading">Donor Details
+                <!-- <a href="#"><i class="fa fa-cog black_icon pull-right"></i></a> -->
+              </h4>
+            </div>
+            <div class="table">
+              <!-- <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <td width="15%"></td>
+                  <td width="25%"><a class="add_new" (click)="addNewDonor(0)">Add New....</a></td>
+                  <td width="25%"></td>
+                  <td width="25%"></td>
+                  <td width="10%"></td>
+                </tr>
+                <tr>
+                  <td class="grey-text" width="15%">Donar Name</td>
+                  <td width="20%" class="grey-text">Donar Contact Designation</td>
+                  <td class="grey-text" width="25%">Donar Contact Person</td>
+                  <td class="grey-text" width="25%">Donar Contact Person Email</td>
+                  <td  width="10%"></td>
+                </tr>
+                <tr *ngFor="let list of donorList"  (click)="addNewProject(list.DonorId)">
+                  <td class="grey-text" width="15%">{{list.Name}}
+                  </td>
+                  <td width="25%" class="grey-text">{{list.ContactDesignation}}
+                  </td>
+                  <td class="grey-text" width="25%">{{list.ContactPerson}}
+                  </td>
+                  <td width="25%" class="grey-text">{{list.ContactPersonEmail}}
+                    </td>
+                    <td class="grey-text" width="10%">
+                  </td>
+
+                </tr>
+              </tbody>
+            </table> -->
+
+              <p-table [columns]="cols" class="table table-bordered" [value]="donorList" [rows]="10" [paginator]="true"
+                [(first)]="firsts" [(totalRecords)]="tottalRecord" (onPage)="paginate($event)">
+                <ng-template pTemplate="header" let-columns>
+                  <tr>
+                    <!-- <th *ngFor="let col of columns">
+                            {{col.header}}
+                        </th> -->
+                    <th width="40%"></th>
+                    <th width="25%"> <a class="add_new" (click)="onItemClick($event)">Add New....</a></th>
+                    <th width="10%"></th>
+                    <!-- <th width="25%"></th> -->
+                    <th width="25%"></th>
+                  </tr>
+                  <tr>
+                    <!-- <th *ngFor="let col of columns">
+                            {{col.header}}
+                        </th>  -->
+                    <th width="40%"></th>
+                    <th width="25%"></th>
+                    <th width="10%"></th>
+                    <th width="25%"></th>
+                    <!-- <th width="20"></th> -->
+                  </tr>
+                </ng-template>
+                <!-- <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr> -->
+                <!-- <td *ngFor="let col of columns">
+                            {{rowData[col.field]}}
+                        </td> -->
+                <!-- </tr> -->
+                <!-- </ng-template> -->
+                <ng-template pTemplate="body" let-list>
+                  <tr (click)="OnClickDonoRow(list.DonorId)">
+                    <td>{{list.Name}}</td>
+                    <td></td>
+                    <td>{{list.ContactPersonCell}}</td>
+                    <td></td>
+                    <td></td>
+                    <!-- <td >{{list.ContactDesignation}}</td>                                  -->
+                    <!-- <td >{{list.ContactPerson}}</td> -->
+                    <!-- <td>{{list.ContactPersonEmail}}</td> -->
+
+                  </tr>
+                </ng-template>
+
+              </p-table>
+            </div>
+          </mat-card>
+        </div>
+        <div *ngIf="showJobDetail" class="col-sm-6">
+          <app-donor-master [routeId]="routeId" (valueChange)='displayCounter($event)' (onsubmit)='diplayList($event)'
+            (onDeleted)="deletedDonor($event)"></app-donor-master>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+  <!-- <router-outlet></router-outlet> -->

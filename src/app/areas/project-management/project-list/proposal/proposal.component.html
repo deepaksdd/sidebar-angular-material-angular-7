@@ -1,0 +1,212 @@
+<div class="proposal-main">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="top-header clearfix">
+
+          <h4 class="main_heading">PROPOSAL
+            <a mat-href (click)="ProposalDetailsChange('proposalAccept',true)" class="grey_color" *ngIf="Isproposaltrue && !IsProposalAccept">
+              <i class="fa fa-check  pull-right"></i></a>
+            <a href="javascript:void(0)" *ngIf="IsProposalAccept">
+              <i class="fa fa-check green pull-right"></i></a>
+            <a mat-href [(matTooltipPosition)]="position.value" matTooltip="Please Complete All documents" class="grey_color pull-right"
+              *ngIf="!Isproposaltrue">
+              <i class="fa fa-check  pull-right"></i></a>
+          </h4>
+
+        </div>
+        <div class="row bdr_btm pad_btm_25 mar_tp_40">
+          <div class="col-sm-3">
+
+            <div class="comment-text table">
+              <div class="user_name table-cell">
+                <p>HR</p>
+              </div>
+              <div class="user_text table-cell">
+                <p class="grey_color"><b>Assigned To</b><br> 
+                  <mat-form-field class="example-full-width">
+                      <input type="text"  matInput [(ngModel)]="ProjectAssignTo"
+                        [matAutocomplete]="autoUserList" />
+                      <mat-autocomplete #autoUserList="matAutocomplete">
+                        <mat-option *ngFor="let item of UserList" [value]="item.Username"  (onSelectionChange)="ProposalDetailsChange('Assigned', item.UserID)">
+                          {{item.Username}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-sm-3">
+
+            <div class="comment-text table">
+              <div class="user_name table-cell">
+                <a href="#" class="far fa-credit-card green font_22"></a>
+              </div>
+              <div class="user_text table-cell">
+                <p class="grey_color"><b>Budget Valuation</b><br><b>
+                    <mat-form-field class="example-full-width">
+                        <input type="text"  aria-label="Number" matInput [(ngModel)]="Currency"
+                          [matAutocomplete]="autoCurrencyList" />
+                        <mat-autocomplete #autoCurrencyList="matAutocomplete">
+                          <mat-option *ngFor="let item of CurrencyList" [value]="item.CurrencyCode" (onSelectionChange)="ProposalDetailsChange('Currency', item.CurrencyCode)">
+                            {{item.CurrencyCode}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                </b>
+                  <mat-form-field class="example-full-width">
+                      <input matInput #ProposalBudget type="text" [(ngModel)]="ProposalModel.ProposalBudget" maxlength="150"
+                        name="proposalBudget" (keypress)="numberOnly($event)" (focusout)="ProposalDetailsChange('proposalBudget',ProposalBudget.value)" />
+                    </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="comment-text table">
+              <!-- <div class="user_name table-cell">
+                <p class="ocean_blue"> <i class="far fa-calendar-alt"></i></p>
+              </div> -->
+              <div class="user_text table-cell">
+                <mat-form-field style="width: 90%">
+                  <input matInput [(ngModel)]="ProposalModel.ProposalDueDate" [matDatepicker]="picker1" placeholder="Due Date"
+                    (dateChange)="ProposalDetailsChange('dueDate',ProposalModel.ProposalDueDate)">
+                  <mat-datepicker-toggle *ngIf="ProposalModel.ProposalDueDate!=null" matSuffix [for]="picker1" class="blue_date"></mat-datepicker-toggle>
+                  <mat-datepicker-toggle *ngIf="ProposalModel.ProposalDueDate==null" matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="comment-text table">
+              <div>                
+                <div class="user_text table-cell" *ngIf="ProposalStartDate==undefined">
+                  <p class="grey_color">Start date<br>Please Start Proposal</p>
+                </div>
+                <div class="user_text table-cell" *ngIf="ProposalStartDate!=undefined">
+                    <p class="grey_color">Start date<br>{{ProposalStartDate|date: 'd MMM, y'}}</p>
+                  </div>
+                <div class="user_name table-cell">
+                    <i class="mat-datepicker-toggle far fa-calendar-check"></i>
+                </div>
+              </div>
+
+
+              <!-- <div class="user_name table-cell" *ngIf="ProposalStartDate!=undefined">
+                <p class="ocean_blue"><i class="far fa-calendar-check">{{ProposalStartDate}}</i></p>
+              </div>
+              <div class="user_name table-cell" *ngIf="ProposalStartDate==undefined">
+                <p><i class="far fa-calendar-check">Start date</i></p>
+              </div> -->
+              <!-- <div class="user_text table-cell">
+                <mat-form-field style="width: 90%">
+                  <input matInput [(ngModel)]="ProposalModel.ProposalStartDate" [matDatepicker]="picker" placeholder="Start Date"
+                    (dateChange)="ProposalDetailsChange('proposalStartDate',ProposalModel.ProposalStartDate)">
+                  <mat-datepicker-toggle *ngIf="ProposalModel.ProposalStartDate!=null" matSuffix [for]="picker" class="blue_date"></mat-datepicker-toggle>
+                  <mat-datepicker-toggle matSuffix [for]="picker" *ngIf="ProposalModel.ProposalStartDate==null"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div> -->
+            </div>
+
+          </div>
+        </div>
+        <div class="row mar_tp_40 width_25">
+          <div class="col-sm-2 doc-upload-wrap">
+            <span *ngIf="ProposalWebLink!=null">
+              <a [href]="ProposalWebLink" target="_blank" class="Genrating min-hg-160 grey_bg">
+                <span class="fa fa-file-alt blue" style="font-size:17rem;"></span>
+                <p class="proposals">PROPOSAL</p>
+              </a>
+            </span>
+            <span *ngIf="ProposalWebLink==null" class="only-txt">
+              <a (click)="StartProposal()" class="Genrating min-hg-160 grey_bg">
+                <mat-card>
+                  <p class="proposals" (onclick)="StartProposal()">Start PROPOSAL</p>
+                </mat-card>
+              </a>
+            </span>
+
+          </div>
+          <div class="col-sm-2 doc-upload-wrap">
+            <span *ngIf="EDIFileWebLink!=null">
+              <a [href]="EDIFileWebLink" target="_blank" class="Genrating min-hg-160 grey_bg">
+                <span *ngIf="EDIFileExtType === 'docx'" class="fa fa-file-alt blue" style="font-size:17rem;"></span>
+                <span *ngIf="EDIFileExtType === 'doc'" class="fa fa-file-alt blue" style="font-size:17rem;"></span>
+                <span *ngIf="EDIFileExtType === 'pdf'" class="fa fa-file-pdf red" style="font-size:17rem;"></span>
+                <span *ngIf="EDIFileExtType === 'xlsx'" class="fa fa-file-excel green" style="font-size:17rem;"></span>
+                <span *ngIf="EDIFileExtType === 'xls'" class="fa fa-file-excel green" style="font-size:17rem;"></span>
+                <span *ngIf="EDIFileExtType === 'csv'" class="fa fa-file-excel green" style="font-size:17rem;"></span>
+                <p class="proposals">EOI</p>
+              </a>
+            </span>
+            <span *ngIf="EDIFileWebLink==null" class="only-txt">
+              <file-drop headertext="Drop  EOI Document files" (onFileDrop)="dropped($event,'EOI')" (onFileOver)="fileOver($event)"
+                (onFileLeave)="fileLeave($event)" [disableIf]="ProposalWebLink==null">
+              </file-drop>
+
+            </span>
+          </div>
+          <div class="col-sm-2 doc-upload-wrap">
+            <span *ngIf="BudgetFileWebLink!=null">
+              <a [href]="BudgetFileWebLink" target="_blank" class="Genrating min-hg-160 grey_bg">
+                <span *ngIf="BudgetFileExtType === 'docx'" class="fa fa-file-alt blue" style="font-size:17rem;"></span>
+                <span *ngIf="BudgetFileExtType === 'doc'" class="fa fa-file-alt blue" style="font-size:17rem;"></span>
+                <span *ngIf="BudgetFileExtType === 'pdf'" class="fa fa-file-pdf red" style="font-size:17rem;"></span>
+                <span *ngIf="BudgetFileExtType === 'xlsx'" class="fa fa-file-excel green" style="font-size:17rem;"></span>
+                <span *ngIf="BudgetFileExtType === 'xls'" class="fa fa-file-excel green" style="font-size:17rem;"></span>
+                <span *ngIf="BudgetFileExtType === 'csv'" class="fa fa-file-excel green" style="font-size:17rem;"></span>
+                <p class="proposals">BUDGET</p>
+              </a>
+            </span>
+            <span *ngIf="BudgetFileWebLink==null" class="only-txt">
+              <file-drop headertext="Drop BUDGET Document files" (onFileDrop)="dropped($event,'BUDGET')" (onFileOver)="fileOver($event)"
+                (onFileLeave)="fileLeave($event)" [disableIf]="ProposalWebLink==null">
+              </file-drop>
+            </span>
+          </div>
+          <div class="col-sm-2 doc-upload-wrap">
+            <span *ngIf="ConceptFileWebLink!=null">
+              <a [href]="ConceptFileWebLink" target="_blank" class="Genrating min-hg-160 grey_bg">
+                <span *ngIf="ConceptFileExtType === 'docx'" class="fa fa-file-alt blue" style="font-size:17rem;"></span>
+                <span *ngIf="ConceptFileExtType === 'doc'" class="fa fa-file-alt blue" style="font-size:17rem;"></span>
+                <span *ngIf="ConceptFileExtType === 'pdf'" class="fa fa-file-pdf red" style="font-size:17rem;"></span>
+                <span *ngIf="ConceptFileExtType === 'xlsx'" class="fa fa-file-excel green" style="font-size:17rem;"></span>
+                <span *ngIf="ConceptFileExtType === 'xls'" class="fa fa-file-excel green" style="font-size:17rem;"></span>
+                <span *ngIf="ConceptFileExtType === 'csv'" class="fa fa-file-excel green" style="font-size:17rem;"></span>
+                <p class="proposals">CONCEPT</p>
+              </a>
+            </span>
+            <span *ngIf="ConceptFileWebLink==null" class="only-txt">
+              <file-drop headertext="Drop CONCEPT Document files" (onFileDrop)="dropped($event,'CONCEPT')" (onFileOver)="fileOver($event)"
+                (onFileLeave)="fileLeave($event)" [disableIf]="ProposalWebLink==null">
+              </file-drop>
+            </span>
+
+          </div>
+          <div class="col-sm-2 doc-upload-wrap">
+            <span *ngIf="PresentationFileWebLink!=null">
+              <a [href]="PresentationFileWebLink" target="_blank" class="Genrating min-hg-160 grey_bg">
+                <span *ngIf="PresentationExtType === 'docx'" class="fa fa-file-alt blue" style="font-size:17rem;"></span>
+                <span *ngIf="PresentationExtType === 'doc'" class="fa fa-file-alt blue" style="font-size:17rem;"></span>
+                <span *ngIf="PresentationExtType === 'pdf'" class="fa fa-file-pdf red" style="font-size:17rem;"></span>
+                <span *ngIf="PresentationExtType === 'xlsx'" class="fa fa-file-excel green" style="font-size:17rem;"></span>
+                <span *ngIf="PresentationExtType === 'xls'" class="fa fa-file-excel green" style="font-size:17rem;"></span>
+                <span *ngIf="PresentationExtType === 'csv'" class="fa fa-file-excel green" style="font-size:17rem;"></span>
+                <p class="proposals">PRESENTATION</p>
+              </a>
+            </span>
+            <span *ngIf="PresentationFileWebLink==null" class="only-txt">
+              <file-drop headertext="Drop PRESENTATION Document files" (onFileDrop)="dropped($event,'PRESENTATION')"
+                (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)" [disableIf]="ProposalWebLink==null">
+              </file-drop>
+            </span>
+          </div>
+        </div>
+        <div class="row mar_tp_40 "></div>
+      </div>
+    </div>
+  </div>
+</div>
